@@ -20,5 +20,5 @@ WHITE='\033[1;37m'
 
 # Banner
 clear
-echo "${WHITE}by ${GREEN}TUNBudi06${NOCOLOR}"
+echo -e "${WHITE}by ${GREEN}TUNBudi06${NOCOLOR}"
 echo -e "-----------------------"
