@@ -1,0 +1,31 @@
+source etc/banner
+source etc/PIPELINE
+function outputfolder {
+cd $down
+if [[ -d "output" ]]
+  then
+    echo ""
+  else
+    echo ""
+    mkdir $down/output
+fi
+}
+
+function DMPfolder {
+cd down
+if [[ -d "dmp" ]]
+  then
+    echo ""
+  else
+    echo ""
+    mkdir $down/dmp
+fi
+cd $tx
+
+}
+
+DMPfolder
+echo "PROCCESING FILE"
+outputfolder
+sleep 1
+bash enc
