@@ -3,6 +3,8 @@ tx=$HOME/scanenc
 dmp=/storage/emulated/0/Download/dmp
 quickbms=$PREFIX/share/quickbms
 fdr=$HOME/etc/folderuser
+quickbms_dir=$PREFIX/share/quickbms
+sd=/storage/emulated/0/Download
 
 echo "WAIT"
 sleep 1
