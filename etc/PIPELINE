@@ -1,0 +1,8 @@
+down=/storage/emulated/0/Download
+tx=$HOME/scanenc
+dmp=/storage/emulated/0/Download/dmp
+quickbms=$PREFIX/share/quickbms
+fdr=$HOME/etc/folderuser
+
+echo "WAIT"
+sleep 1
