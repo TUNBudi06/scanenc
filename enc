@@ -1,0 +1,169 @@
+#!/bin/bash
+source etc/banner
+source etc/PIPELINE
+
+
+
+
+
+
+function filedatfinder {
+cd $dmp
+prompt="Please select a file to find tipe encrypt:"
+options=( $(find *.dat) )
+
+PS3="$prompt "
+select dat in "${options[@]}" "Quit" ; do 
+    if (( REPLY == 1 + ${#options[@]} )) ; then
+        break
+
+    elif (( REPLY > 0 && REPLY <= ${#options[@]} )) ; then
+        echo  "You picked $dat which is file $REPLY"
+         break
+    else
+        echo "Invalid option. Try another one."
+    fi
+done
+}
+
+
+
+function dirdatfolder {
+cd $fdr
+if [[ -f "$(dat)" ]]
+  then
+     #file detect
+     rm $fdr/"$(dat)" >/dev/null
+     echo ""> $fdr/"$(dat)"
+     #folder detect
+     rm  -rf $dmp/"$(dat)" >/dev/null
+     mkdir $dmp/"$(dat)"  
+  else
+    echo ""> $fdr/"$(dat)"
+    mkdir $dmp/"$(dat)"
+fi
+}
+
+
+
+
+
+
+function linerpipe {
+echo -e " 1=etc/toolenc.bms" >etc/linerpipe1
+echo -e "2=$dmp/$(dat)" >etc/linerpipe2
+echo -e "3=$(down)/output/$(dat)'" >etc/linerpipe3
+}
+
+
+
+function keystr {
+ echo "4='$(keyr)'" >etc/key
+}
+
+
+
+
+
+
+
+
+
+
+
+function pilkeystr {
+    read -p "Please input key: " keyr
+    echo "are you sure the key is $(keyr)"
+    read -p "Y OR N : " pil
+       if [ $pil == Y ];
+          then
+              echo " OK THEN"
+              keystr
+              break
+       elif [ $pil == y ];
+          then 
+              echo " OK THEN"
+              keystr
+              break
+       else
+            break
+     fi
+}
+
+
+
+
+
+
+function ivecstr {
+echo "5='$(ivec)'" > etc/ivec
+}
+
+
+
+
+
+
+function pilivecstr {
+    read -p "Please input ivec: " ivecr
+    echo "are you sure the key is $(ivecr)"
+    read -p "Y OR N : " pil
+       if [ $pil == Y ];
+          then
+              echo " OK THEN"
+              ivecstr
+              break
+       elif [ $pil == y ];
+          then 
+              echo " OK THEN"
+              ivecstr
+              break
+       else
+            break
+     fi
+}
+
+
+#fnd1 $4 and $5
+#fnd2 $4
+#fnd3 without them
+
+
+
+#HEAD PROGRAM
+echo "option 1 adalah option untuk tidak menggunakan KEY dan IVEC"
+echo "option 2 adalah option menggunakan key aja"
+echo "option 3 adalah option menggunakan key dan ivec"
+
+PS3='Please enter your choice: '
+options=("option 1" "option 1" "option 3" "Quit")
+select dadi in "${options[@]}"
+do
+    case $dadi in
+        "option 1")
+            filedatfinder
+            dirdatfolder
+            bash OPT1
+            ;;
+        "option 2")
+            filedatfinder
+            dirdatfolder
+            pilkeystr
+            bash OPT2
+            ;;
+        "option 3")
+            filedatfinder
+            dirdatfolder
+            pilkeystr
+            pilivecstr
+            bash OPT3
+            ;;
+        "Quit")
+            exit
+            
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done 
+
+
