@@ -131,7 +131,7 @@ echo "option 2 adalah option menggunakan key aja"
 echo "option 3 adalah option menggunakan key dan ivec"
 
 PS3='Please enter your choice: '
-options=("option 1" "option 1" "option 3" "Quit")
+options=("option 1" "option 2" "option 3" "Quit")
 select dadi in "${options[@]}"
 do
     case $dadi in
