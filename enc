@@ -30,17 +30,18 @@ done
 
 function dirdatfolder {
 cd $fdr
-if [[ -f "$(dat)" ]]
+file2="$dat"
+if [[ -f "$file2" ]]
   then
      #file detect
-     rm $fdr/"$(dat)" >/dev/null
-     echo ""> $fdr/"$(dat)"
+     rm $fdr/"$dat" >/dev/null
+     echo ""> $fdr/"$dat"
      #folder detect
-     rm  -rf $dmp/"$(dat)" >/dev/null
-     mkdir $dmp/"$(dat)"  
+     rm  -rf $dmp/"$dat" >/dev/null
+     mkdir $dmp/"$dat"  
   else
-    echo ""> $fdr/"$(dat)"
-    mkdir $dmp/"$(dat)"
+    echo ""> $fdr/"$dat"
+    mkdir $dmp/"$dat"
 fi
 }
 
@@ -51,16 +52,10 @@ fi
 
 function linerpipe {
 echo -e " 1=etc/toolenc.bms" >etc/linerpipe1
-echo -e "2=$dmp/$(dat)" >etc/linerpipe2
-echo -e "3=$(down)/output/$(dat)'" >etc/linerpipe3
+echo -e "2=$dmp/$dat" >etc/linerpipe2
+mkdir $down/output/'$dat'
+echo -e "3=$down/output/$dat" >etc/linerpipe3
 }
-
-
-
-function keystr {
- echo "4='$(keyr)'" >etc/key
-}
-
 
 
 
@@ -73,17 +68,17 @@ function keystr {
 
 function pilkeystr {
     read -p "Please input key: " keyr
-    echo "are you sure the key is $(keyr)"
+    echo "are you sure the key is $keyr"
     read -p "Y OR N : " pil
        if [ $pil == Y ];
           then
               echo " OK THEN"
-              keystr
+              echo "4='$keyr'" >etc/key
               break
        elif [ $pil == y ];
           then 
               echo " OK THEN"
-              keystr
+              echo "4='$keyr'" >etc/key
               break
        else
             break
@@ -95,28 +90,22 @@ function pilkeystr {
 
 
 
-function ivecstr {
-echo "5='$(ivec)'" > etc/ivec
-}
-
-
-
 
 
 
 function pilivecstr {
     read -p "Please input ivec: " ivecr
-    echo "are you sure the key is $(ivecr)"
+    echo "are you sure the key is $ivecr"
     read -p "Y OR N : " pil
        if [ $pil == Y ];
           then
               echo " OK THEN"
-              ivecstr
+              echo "5='$ivec'" > etc/ivec
               break
        elif [ $pil == y ];
           then 
               echo " OK THEN"
-              ivecstr
+              echo "5='$ivec'" > etc/ivec
               break
        else
             break
@@ -128,6 +117,12 @@ function pilivecstr {
 #fnd2 $4
 #fnd3 without them
 
+CD $tx
+rm -rf etc/key
+rm -rf etc/ivec
+rm -rf etc/linerpipe1
+rm -rf etc/linerpipe2
+rm -rf etc/linerpipe3
 
 
 #HEAD PROGRAM
@@ -143,12 +138,14 @@ do
         "option 1")
             filedatfinder
             dirdatfolder
+            cd $tx 
             bash OPT1
             ;;
         "option 2")
             filedatfinder
             dirdatfolder
             pilkeystr
+            cd $tx
             bash OPT2
             ;;
         "option 3")
@@ -156,6 +153,7 @@ do
             dirdatfolder
             pilkeystr
             pilivecstr
+            cd $tx
             bash OPT3
             ;;
         "Quit")
