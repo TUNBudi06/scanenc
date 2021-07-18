@@ -27,7 +27,7 @@ if [[ -d "folderuser" ]]
   else
     echo "making file folderuser"
     mkdir $tx/etc/folderuser
-
+fi
 echo "PROCCESING FILE"
 sleep 1
 bash enc
