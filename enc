@@ -117,7 +117,7 @@ function pilivecstr {
 #fnd2 $4
 #fnd3 without them
 
-CD $tx
+cd $tx
 rm -rf etc/key
 rm -rf etc/ivec
 rm -rf etc/linerpipe1
