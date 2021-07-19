@@ -1,0 +1,15 @@
+ down=/storage/emulated/0/Download
+tx=$HOME/scanenc
+dmp=/storage/emulated/0/Download/dmp
+quickbms=$PREFIX/share/quickbms
+fdr=$HOME/etc/folderuser
+quickbms_dir=$PREFIX/share/quickbms
+sd=/storage/emulated/0/Download
+    cd $tx
+    echo 'qemu-i386 $PREFIX/share/quickbms/quickbms -a "\"xor\"\"0x79\"" etc/toolenc.bms $dmp/15336.dat $down/output/15336.dat' | bash
+    echo 'qemu-i386 $PREFIX/share/quickbms/quickbms -a "\"xor_prev\"\"0x79\"" etc/toolenc.bms $dmp/15336.dat $down/output/15336.dat' | bash
+    echo 'qemu-i386 $PREFIX/share/quickbms/quickbms -a "\"xor_prev2\"\"0x79\"" etc/toolenc.bms $dmp/15336.dat $down/output/15336.dat' | bash
+    echo 'qemu-i386 $PREFIX/share/quickbms/quickbms -a "\"xor_next\"\"0x79\"" etc/toolenc.bms $dmp/15336.dat $down/output/15336.dat' | bash
+    echo 'qemu-i386 $PREFIX/share/quickbms/quickbms -a "\"xor_next2\"\"0x79\"" etc/toolenc.bms $dmp/15336.dat $down/output/15336.dat' | bash
+    
+     
