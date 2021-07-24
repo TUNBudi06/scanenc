@@ -29,6 +29,7 @@ done
 
 
 function dirdatfolder {
+mkdir etc/folderuser
 cd $fdr
 if [[ -f "$dat" ]]
   then
@@ -36,12 +37,12 @@ if [[ -f "$dat" ]]
      rm $fdr/"$dat" >/dev/null
      echo ""> $fdr/$dat
      #folder detect
-     cd $tx
+     cd $down
      rm  -rf output/$dat >/dev/null
      mkdir output/$dat
   else
     echo ""> $fdr/$dat
-    cd $tx
+    cd $down
     mkdir output >/dev/null
     mkdir output/$dat >/dev/null
 fi
