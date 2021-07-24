@@ -2,7 +2,7 @@ down=/storage/emulated/0/Download
 tx=$HOME/scanenc
 dmp=/storage/emulated/0/Download/dmp
 quickbms=$PREFIX/share/quickbms
-fdr=$HOME/etc/folderuser
+fdr=$HOME/scanenc/etc/folderuser
 quickbms_dir=$PREFIX/share/quickbms
 sd=/storage/emulated/0/Download
 
