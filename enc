@@ -10,7 +10,7 @@ source etc/PIPELINE
 function filedatfinder {
 cd $dmp
 prompt="Please select a file to find tipe encrypt:"
-options=( $(find *.dat) $(find -f) )
+options=( $(find *.dat) $(find *.**) )
 
 PS3="$prompt "
 select dat in "${options[@]}" "Quit" ; do 
